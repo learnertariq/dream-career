@@ -1,5 +1,7 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
+import "../styles/Header.css";
 
 const Header = () => {
   return (
@@ -8,10 +10,26 @@ const Header = () => {
         <Navbar.Brand href="#home">Dream Career</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+          <Nav className="ms-auto nav">
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? "link-active" : "link")}
+            >
+              Home
+            </NavLink>
+
+            <NavLink
+              to="/checkout"
+              className={({ isActive }) => (isActive ? "link-active" : "link")}
+            >
+              Checkout
+            </NavLink>
+            <NavLink
+              to="/login"
+              className={({ isActive }) => (isActive ? "link-active" : "link")}
+            >
+              Login
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>

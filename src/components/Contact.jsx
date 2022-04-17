@@ -4,7 +4,7 @@ import "../styles/Contact.css";
 
 const Contact = () => {
   return (
-    <section className="contact mx-auto p-3 p-md-5 rounded text-center">
+    <section className="contact mx-auto my-5 p-3 p-md-5 rounded text-center">
       <h2 className="text-white">Discover, apply, choose</h2>
       <p className="text-white">
         When it comes to your career management, having a professional career

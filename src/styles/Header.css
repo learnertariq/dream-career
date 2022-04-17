@@ -1,0 +1,12 @@
+.nav a {
+  text-decoration: none;
+  color: gray;
+}
+
+.nav a:not(:last-child) {
+  margin-right: 10px;
+}
+
+.link-active {
+  color: white !important;
+}
