@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Home.css";
 import ControlledCarousel from "./ControlledCarousel";
+import Contact from "./Contact";
 import Services from "./Services";
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
         <ControlledCarousel />
       </section>
       <Services />
+      <Contact />
     </div>
   );
 };
