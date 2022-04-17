@@ -1,5 +1,5 @@
-.banner {
-  /* height: 500px; */
+.banner img {
+  max-height: 500px;
 }
 
 .hero-inner-text {

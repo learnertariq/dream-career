@@ -4,6 +4,7 @@ import "../styles/Services.css";
 import img1 from "../assets/1.jpg";
 import img2 from "../assets/2.jpg";
 import img3 from "../assets/3.jpg";
+import { Link } from "react-router-dom";
 
 const data = [
   {
@@ -41,7 +42,9 @@ const Services = () => {
                   ${s.price}
                 </Card.Text>
                 <Card.Text>{s.text}</Card.Text>
-                <Button variant="success">Enroll Now</Button>
+                <Link to="/checkout" className="btn btn-success">
+                  Enroll Now
+                </Link>
               </Card.Body>
             </Card>
           </div>

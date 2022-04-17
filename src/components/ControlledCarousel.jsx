@@ -18,7 +18,7 @@ function ControlledCarousel() {
           <Carousel.Caption>
             <h2 className="fs-1">Find Your Ideal Career</h2>
             <p className="">
-              Are you stuck in a job you don’t enjoy? Not sure which career
+              Are you stuck in a job you don't enjoy? Not sure which career
               direction to take? If you want to have a job you are passionate
               about, well, you can!
             </p>
