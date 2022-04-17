@@ -10,19 +10,25 @@ const Login = () => {
   const handleLogin = () => {
     console.log("hi");
   };
-  navigate(
-    "/"
-    // {
-    //   to: "/",
-    // replace: true,
-    // state: { from: location?.state?.from },
-    // }
-  );
+
+  // navigate(
+  //   "/"
+  // {
+  //   to: "/",
+  // replace: true,
+  // state: { from: location?.state?.from },
+  // }
+  // );
+
   return (
     <>
       <Form className="form mx-auto">
         <h1>Login</h1>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group
+          onSubmit={handleLogin}
+          className="mb-3"
+          controlId="formBasicEmail"
+        >
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" placeholder="Enter email" />
           <Form.Text className="text-muted">
@@ -42,11 +48,11 @@ const Login = () => {
 
       <div className="text-center">
         <Link
-          to="/register"
-          className="btn btn-link text-decoration-none"
-          onClick={handleLogin}
+          to={{ pathname: "/register" }}
+          className="btn btn-link text-danger text-decoration-none"
+          state={{ from: location?.state?.from }}
         >
-          Don't have an account
+          Don't have an account? <span className="fw-bold">Register</span>
         </Link>
       </div>
     </>

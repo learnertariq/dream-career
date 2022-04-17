@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button, Form, Spinner } from "react-bootstrap";
 import "../../styles/Auth.css";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
-import auth from "../../utils/firebase.init";
 import Swal from "sweetalert2";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
+import auth from "../../utils/firebase.init";
 
 const Register = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
@@ -20,9 +20,15 @@ const Register = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (user) {
+      Swal.fire({ icon: "success", title: "Registration success" });
+      navigate(location?.state?.from?.pathname || "/");
+    }
+  }, [user]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(userState.name);
     await createUserWithEmailAndPassword(userState.email, userState.password);
     await updateProfile({ displayName: userState.name });
   };
@@ -34,11 +40,6 @@ const Register = () => {
     newUserState[name] = value;
     setUserState(newUserState);
   };
-
-  if (user) {
-    Swal.fire({ icon: "success", title: "Registration success" });
-    navigate(location?.state?.from || "/");
-  }
 
   return (
     <Form className="form mx-auto" onSubmit={handleSubmit}>

@@ -6,6 +6,8 @@ import { Routes, Route } from "react-router-dom";
 import Checkout from "./components/Checkout";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import RequireAuth from "./components/Auth/RequireAuth";
+import Logout from "./components/Auth/Logout";
 
 function App() {
   return (
@@ -13,9 +15,17 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={
+            <RequireAuth>
+              <Checkout />
+            </RequireAuth>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
 
       <Footer />

@@ -7,6 +7,10 @@
   margin-right: 10px;
 }
 
+.nav span {
+  color: white !important;
+}
+
 .link-active {
   color: white !important;
 }
