@@ -13,12 +13,11 @@ function ControlledCarousel() {
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
       {data.map((item, index) => (
-        <Carousel.Item>
+        <Carousel.Item key={index}>
           <img className="d-block w-100" src="banner.jpg" alt="First slide" />
           <Carousel.Caption>
-            <h1 className="">Dream Career</h1>
-            <h2 className="text-danger fs-1">Find Your Ideal Career</h2>
-            <p className="mb-5">
+            <h2 className="fs-1">Find Your Ideal Career</h2>
+            <p className="">
               Are you stuck in a job you don’t enjoy? Not sure which career
               direction to take? If you want to have a job you are passionate
               about, well, you can!

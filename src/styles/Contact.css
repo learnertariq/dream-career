@@ -1,0 +1,10 @@
+.contact {
+  max-width: 800px;
+  background-image: linear-gradient(to right, #d30231, #8a152f);
+  margin-top: -150px !important;
+  transform: translateY(200px);
+  /* z-index: 999 !important; */
+}
+
+.contact * {
+}
