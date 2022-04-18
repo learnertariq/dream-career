@@ -5,3 +5,11 @@
 .hero-inner-text {
   max-width: 400px;
 }
+
+.hero-heading {
+  font-size: 60px;
+  /* color: orange; */
+  /* -webkit-text-fill-color: white; Will override color (regardless of order) */
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #d86100;
+}

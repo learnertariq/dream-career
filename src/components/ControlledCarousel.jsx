@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Carousel } from "react-bootstrap";
+import "../styles/Home.css";
 
 const data = [{}, {}, {}];
 
@@ -16,7 +17,9 @@ function ControlledCarousel() {
         <Carousel.Item key={index}>
           <img className="d-block w-100" src="banner.jpg" alt="First slide" />
           <Carousel.Caption>
-            <h2 className="fs-1">Find Your Ideal Career</h2>
+            <h2 className="hero-heading fw-bold mb-3">
+              Find Your Ideal Career
+            </h2>
             <p className="">
               Are you stuck in a job you don't enjoy? Not sure which career
               direction to take? If you want to have a job you are passionate

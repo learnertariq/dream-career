@@ -26,6 +26,7 @@ const Login = () => {
       Swal.fire({ icon: "success", title: "Login success" });
       navigate(location?.state?.from?.pathname || "/", {
         state: location?.state,
+        replace: true,
       });
     }
   }, [user, userGoogle]);

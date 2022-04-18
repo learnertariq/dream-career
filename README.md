@@ -1,6 +1,32 @@
-# Getting Started with Create React App
+# Dream Career
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Live Site Link](https://dream-career-e6d69.web.app/).
+
+## Features of the Site
+
+- This site has a home page.
+  - Home page has 5 sections
+  - Navbar
+  - Hero Area
+  - Services
+  - Contact
+  - Footer
+- Blogs page with some questions and answers.
+- About page with some description about me.
+- There are Login and Register routes.
+- There is also a protected checkout route
+
+## Technologies Used
+
+- HTML
+- CSS
+  - Bootstrap
+- Javascript
+  - React
+- NPM
+  - firebase
+  - react firebase hooks
+- etc
 
 ## Available Scripts
 

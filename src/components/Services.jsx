@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import "../styles/Services.css";
 import img1 from "../assets/1.jpg";
 import img2 from "../assets/2.jpg";
@@ -19,14 +19,14 @@ const data = [
     name: "Professional",
     price: 249,
     img: img2,
-    text: "Twice a month one-on-one 55 minute sessions with one of our coaches on career direction, job search or work performance",
+    text: "Twice a month one-on-one 55 minute sessions with your coach on career direction, job search or work performance",
   },
   {
     id: 3,
     name: "Premium",
     price: 299,
     img: img3,
-    text: "Three times a month one-on-one 55 minute sessions with one of our career coaches on career direction, job search or work performance",
+    text: "Three times a month one-on-one 55 minute sessions with your career coach on career direction, job search or work performance",
   },
 ];
 

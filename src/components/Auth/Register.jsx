@@ -31,6 +31,7 @@ const Register = () => {
       Swal.fire({ icon: "success", title: "Registration success" });
       navigate(location?.state?.from?.pathname || "/", {
         state: location?.state,
+        replace: true,
       });
     }
   }, [user, userGoogle]);
