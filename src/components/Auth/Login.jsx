@@ -64,7 +64,7 @@ const Login = () => {
   return (
     <>
       <Form onSubmit={handleSubmit} className="form mx-auto">
-        <h1>Login</h1>
+        <h1>{!passwordResetMode ? "Login" : "Reset Password"}</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
             name="email"
@@ -99,7 +99,7 @@ const Login = () => {
         </Button>
       </Form>
 
-      <div className="text-center">
+      <div className="text-center mt-3">
         <button
           onClick={() => setPasswordResetMode(!passwordResetMode)}
           className="btn btn-link text-decoration-none"
