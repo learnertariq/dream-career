@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import "../../styles/Auth.css";
 import auth from "../../utils/firebase.init";
 import Swal from "sweetalert2";
@@ -15,13 +18,15 @@ const Login = () => {
   const navigate = useNavigate();
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] =
+    useSignInWithGoogle(auth);
 
   useEffect(() => {
-    if (user) {
+    if (user || userGoogle) {
       Swal.fire({ icon: "success", title: "Login success" });
       navigate(location?.state?.from?.pathname || "/");
     }
-  }, [user]);
+  }, [user, userGoogle]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -36,42 +41,43 @@ const Login = () => {
     setUserState(newUserState);
   };
 
-  console.log(error?.name);
-
   return (
     <>
       <Form onSubmit={handleLogin} className="form mx-auto">
         <h1>Login</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
           <Form.Control
             name="email"
             onBlur={handleBlur}
             type="email"
             placeholder="Enter email"
+            required
           />
-          <Form.Text className="text-muted">
-            We'll never share your email with anyone else.
-          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
           <Form.Control
             name="password"
             onBlur={handleBlur}
             type="password"
             placeholder="Password"
+            required
           />
         </Form.Group>
-
-        {error && <p className="text-danger">{error.message}</p>}
+        {(loading || loadingGoogle) && (
+          <Spinner className="d-block my-3" animation="border" variant="info" />
+        )}
+        {(error || errorGoogle) && (
+          <p className="text-danger">
+            {error?.message || errorGoogle?.message}
+          </p>
+        )}
         <Button variant="primary" type="submit">
           Submit
         </Button>
       </Form>
 
-      <div className="text-center">
+      <div className="text-center mt-3">
         <Link
           to={{ pathname: "/register" }}
           className="btn btn-link text-danger text-decoration-none"
@@ -79,6 +85,13 @@ const Login = () => {
         >
           Don't have an account? <span className="fw-bold">Register</span>
         </Link>
+        <br />
+        <div className="third-party-container mt-2">
+          <Button onClick={() => signInWithGoogle()} variant="outline-info">
+            <img className="me-2" src="/logos/google.png" alt="" />
+            SignIn with Google
+          </Button>
+        </div>
       </div>
     </>
   );
