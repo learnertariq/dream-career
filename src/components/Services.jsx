@@ -8,18 +8,21 @@ import { Link } from "react-router-dom";
 
 const data = [
   {
+    id: 1,
     name: "Starter Consultation",
     price: 199,
     img: img1,
     text: "Includes our Ideal Career and Job Search Workbooks, over 200 pages detailing our complete coaching program and strategy",
   },
   {
+    id: 2,
     name: "Professional",
     price: 249,
     img: img2,
     text: "Twice a month one-on-one 55 minute sessions with one of our coaches on career direction, job search or work performance",
   },
   {
+    id: 3,
     name: "Premium",
     price: 299,
     img: img3,
@@ -32,8 +35,8 @@ const Services = () => {
     <section className="container services-container">
       <h2 className="text-center fs-1 mt-5 mb-3">Services</h2>
       <div className="services row row-cols-1 row-cols-md-3">
-        {data.map((s, i) => (
-          <div key={i} className="service col">
+        {data.map((s) => (
+          <div key={s.id} className="service col">
             <Card>
               <Card.Img variant="top" src={s.img} />
               <Card.Body>
@@ -42,7 +45,7 @@ const Services = () => {
                   ${s.price}
                 </Card.Text>
                 <Card.Text>{s.text}</Card.Text>
-                <Link to="/checkout" className="btn btn-success">
+                <Link to="/checkout" state={s} className="btn btn-success">
                   Enroll Now
                 </Link>
               </Card.Body>

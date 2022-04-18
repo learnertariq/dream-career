@@ -8,6 +8,8 @@ import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
 import RequireAuth from "./components/Auth/RequireAuth";
 import Logout from "./components/Auth/Logout";
+import Blogs from "./components/Blogs";
+import About from "./components/About";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/about" element={<About />} />
         <Route
           path="/checkout"
           element={
