@@ -4,22 +4,27 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
+  useSendPasswordResetEmail,
 } from "react-firebase-hooks/auth";
 import "../../styles/Auth.css";
 import auth from "../../utils/firebase.init";
 import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [userState, setUserState] = useState({
     email: "",
     password: "",
   });
+  const [passwordResetMode, setPasswordResetMode] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, userGoogle, loadingGoogle, errorGoogle] =
     useSignInWithGoogle(auth);
+  const [sendPasswordResetEmail, sending, errorReset] =
+    useSendPasswordResetEmail(auth);
 
   useEffect(() => {
     if (user || userGoogle) {
@@ -31,8 +36,15 @@ const Login = () => {
     }
   }, [user, userGoogle]);
 
-  const handleLogin = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!passwordResetMode) return handleLogin();
+
+    handleForgotPassword();
+  };
+
+  const handleLogin = async () => {
     await signInWithEmailAndPassword(userState.email, userState.password);
   };
 
@@ -44,9 +56,14 @@ const Login = () => {
     setUserState(newUserState);
   };
 
+  const handleForgotPassword = async () => {
+    await sendPasswordResetEmail(userState.email);
+    toast.success("Sent email");
+  };
+
   return (
     <>
-      <Form onSubmit={handleLogin} className="form mx-auto">
+      <Form onSubmit={handleSubmit} className="form mx-auto">
         <h1>Login</h1>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Control
@@ -58,29 +75,38 @@ const Login = () => {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Control
-            name="password"
-            onBlur={handleBlur}
-            type="password"
-            placeholder="Password"
-            required
-          />
-        </Form.Group>
-        {(loading || loadingGoogle) && (
+        {!passwordResetMode && (
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Control
+              name="password"
+              onBlur={handleBlur}
+              type="password"
+              placeholder="Password"
+              required
+            />
+          </Form.Group>
+        )}
+        {(loading || loadingGoogle || sending) && (
           <Spinner className="d-block my-3" animation="border" variant="info" />
         )}
-        {(error || errorGoogle) && (
+        {(error || errorGoogle || errorReset) && (
           <p className="text-danger">
-            {error?.message || errorGoogle?.message}
+            {error?.message || errorGoogle?.message || errorReset?.message}
           </p>
         )}
         <Button variant="primary" type="submit">
-          Login
+          {!passwordResetMode ? "Login" : "Reset Password"}
         </Button>
       </Form>
 
-      <div className="text-center mt-3">
+      <div className="text-center">
+        <button
+          onClick={() => setPasswordResetMode(!passwordResetMode)}
+          className="btn btn-link text-decoration-none"
+        >
+          {!passwordResetMode ? "Forgot password?" : "Go Login mode"}
+        </button>
+        <br />
         <Link
           to={{ pathname: "/register" }}
           className="btn btn-link text-danger text-decoration-none"

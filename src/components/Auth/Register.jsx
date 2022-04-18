@@ -5,9 +5,9 @@ import "../../styles/Auth.css";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import Swal from "sweetalert2";
-import { useUpdateProfile } from "react-firebase-hooks/auth";
 import auth from "../../utils/firebase.init";
 
 const Register = () => {
