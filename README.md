@@ -1,6 +1,6 @@
 # Dream Career
 
-[Live Site Link](https://dream-career-e6d69.web.app/).
+## [Live Site Link](https://dream-career-e6d69.web.app/).
 
 ## Features of the Site
 
