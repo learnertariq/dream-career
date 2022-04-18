@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Starter Consultation",
+    "price": 199,
+    "img": "/assets/1.jpg",
+    "text": "Includes our Ideal Career and Job Search Workbooks, over 200 pages detailing our complete coaching program and strategy"
+  },
+  {
+    "id": 2,
+    "name": "Professional",
+    "price": 249,
+    "img": "/assets/2.jpg",
+    "text": "Twice a month one-on-one 55 minute sessions with your coach on career direction, job search or work performance"
+  },
+  {
+    "id": 3,
+    "name": "Premium",
+    "price": 299,
+    "img": "/assets/3.jpg",
+    "text": "Three times a month one-on-one 55 minute sessions with your career coach on career direction, job search or work performance"
+  }
+]

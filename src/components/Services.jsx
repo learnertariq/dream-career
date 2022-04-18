@@ -1,36 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
 import "../styles/Services.css";
-import img1 from "../assets/1.jpg";
-import img2 from "../assets/2.jpg";
-import img3 from "../assets/3.jpg";
 import { Link } from "react-router-dom";
 
-const data = [
-  {
-    id: 1,
-    name: "Starter Consultation",
-    price: 199,
-    img: img1,
-    text: "Includes our Ideal Career and Job Search Workbooks, over 200 pages detailing our complete coaching program and strategy",
-  },
-  {
-    id: 2,
-    name: "Professional",
-    price: 249,
-    img: img2,
-    text: "Twice a month one-on-one 55 minute sessions with your coach on career direction, job search or work performance",
-  },
-  {
-    id: 3,
-    name: "Premium",
-    price: 299,
-    img: img3,
-    text: "Three times a month one-on-one 55 minute sessions with your career coach on career direction, job search or work performance",
-  },
-];
-
 const Services = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("services.json")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
   return (
     <section className="container services-container">
       <h2 className="text-center fs-1 mt-5 mb-3">Services</h2>
