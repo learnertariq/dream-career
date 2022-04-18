@@ -29,7 +29,9 @@ const Register = () => {
   useEffect(() => {
     if (user || userGoogle) {
       Swal.fire({ icon: "success", title: "Registration success" });
-      navigate(location?.state?.from?.pathname || "/");
+      navigate(location?.state?.from?.pathname || "/", {
+        state: location?.state,
+      });
     }
   }, [user, userGoogle]);
 
@@ -105,7 +107,7 @@ const Register = () => {
         <Link
           to={{ pathname: "/login" }}
           className="btn btn-link text-danger text-decoration-none"
-          state={{ from: location?.state?.from }}
+          state={location?.state}
         >
           Already have an account? <span className="fw-bold">Login</span>
         </Link>

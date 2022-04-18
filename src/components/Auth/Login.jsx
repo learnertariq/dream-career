@@ -24,7 +24,9 @@ const Login = () => {
   useEffect(() => {
     if (user || userGoogle) {
       Swal.fire({ icon: "success", title: "Login success" });
-      navigate(location?.state?.from?.pathname || "/");
+      navigate(location?.state?.from?.pathname || "/", {
+        state: location?.state,
+      });
     }
   }, [user, userGoogle]);
 
@@ -73,7 +75,7 @@ const Login = () => {
           </p>
         )}
         <Button variant="primary" type="submit">
-          Submit
+          Login
         </Button>
       </Form>
 
@@ -81,7 +83,7 @@ const Login = () => {
         <Link
           to={{ pathname: "/register" }}
           className="btn btn-link text-danger text-decoration-none"
-          state={{ from: location?.state?.from }}
+          state={location?.state}
         >
           Don't have an account? <span className="fw-bold">Register</span>
         </Link>
