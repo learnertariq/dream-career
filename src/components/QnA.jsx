@@ -4,17 +4,32 @@ const qnaData = [
   {
     q: "Authentication vs Authorization",
     a: [
-      "There many hooks are introduced in the 2 or 3 earlier versions of REACT.",
+      "The process of verifying who the person is called Authentication and the process of verifying if the user has the right permission to access the data is called Authentication.",
+      "Passwords, Pin, Biometric information, etc is used to Authenticate a user. But Authorization role is set by the organization.",
+      "Authentication is the first step to access any protected data. And Authorization always happens after successful Authorization.",
+      "User can change the information of Authentication, but authorization is only changed by the admin",
     ],
   },
   {
     q: 'Why "Firebase"? Why not Others?',
-    a: ["Semantic Tags indicates what they actually are"],
+    a: [
+      "Firebase services is almost all in one place services",
+      "Firebase (BAAS) Backend as a service, a Google based product helps us to deploy any kinda backend on the firebase hosting.",
+      "Firebase has it's won database. We can store users data like user details, chat message and metadata",
+      "Firebase has it's cloud storage. We can store profile pictures and multimedia files on it's cloud storage",
+      "Firebase has also cloud messaging service",
+      "We use firebase because of it's vast majority of services.",
+    ],
   },
   {
-    q: '"Firebase" services other than Auth',
+    q: '"Firebase" services other than Authentication',
     a: [
-      "Block elements starts on a new line, But inline-block elements doesn't starts on a new line",
+      "Firebase has many services other than Authentication",
+      "Firebase provides real time database platform",
+      "Firebase provides real time database management API",
+      "Firebase provides Cloud storage to store many kinda data and multimedia files",
+      "Firebase provides Hosting our site live to the internet",
+      "With all the services above firebase also provides the services called Function and ML KIT",
     ],
   },
 ];
